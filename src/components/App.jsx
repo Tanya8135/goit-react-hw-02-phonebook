@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 import ContactForm from './ContactForm';
@@ -16,7 +17,6 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    search: '',
   };
 
   handleAddContact = (name, number) => {
