@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import style from './App.module.css';
+import style from './Filter.module.css';
 
 const Filter = ({ filter, onChange }) => (
   <label className={style.subTitle}>
