@@ -18,7 +18,23 @@ class App extends Component {
     filter: '',
   };
 
-  handleAddContact = (name, number) => {
+  handleAddContact = contact => {
+    const { contacts } = this.state;
+    const { name, number } = contact;
+
+    if (name.trim() === '' || number.trim() === '') {
+      return;
+    }
+
+    const existsContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (existsContact) {
+      alert(`${name} is already in contacts!`);
+      return;
+    }
+
     const newContact = {
       id: nanoid(),
       name: name,
@@ -50,7 +66,7 @@ class App extends Component {
     return (
       <div className={style['phone-book']}>
         <h1 className={style.name}>Phonebook</h1>
-        <ContactForm contacts={contacts} onAddContact={this.handleAddContact} />
+        <ContactForm onAddContact={this.handleAddContact} />
 
         <h2 className={style.name}>Contacts</h2>
         <Filter filter={filter} onChange={this.handleFilterChange} />

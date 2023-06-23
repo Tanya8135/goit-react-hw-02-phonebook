@@ -18,23 +18,10 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, number } = this.state;
-    const { contacts, onAddContact } = this.props;
+    const { onAddContact } = this.props;
 
-    if (name.trim() === '' || number.trim() === '') {
-      return;
-    }
-
-    const existsContact = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (existsContact) {
-      alert(`${name} is already in contacts!`);
-      return;
-    }
-
-    onAddContact(name, number);
+    onAddContact(this.state);
+    
     this.setState({ name: '', number: '' });
   };
 
